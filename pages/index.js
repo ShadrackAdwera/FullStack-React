@@ -9,12 +9,27 @@ export default function Home() {
   const emailRef = useRef();
   const feedBackRef = useRef();
 
-  const submitHandler = (e) => {
+  const submitHandler = async(e) => {
     e.preventDefault();
     const name = nameRef.current.value;
     const email = emailRef.current.value;
     const feedbacc = feedBackRef.current.value;
-    console.log({name,email,feedbacc});
+    try {
+      const response = await fetch('/api/info', {
+        method: 'POST',
+        headers : {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name,email,feedbacc})
+      });
+      if(!response.ok) {
+        throw new Error('An error occured');
+      }
+      const resData = await response.json();
+      alert(resData.message);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return <div className={styles.container}>

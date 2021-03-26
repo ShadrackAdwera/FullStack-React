@@ -16,10 +16,12 @@ const handler = (req,res) => {
         const fileInfo = fs.readFileSync(filePath);
         const arrayFileData = JSON.parse(fileInfo);
         arrayFileData.unshift(newFeedback);
-        await fs.writeFileSync(filePath, JSON.stringify(arrayFileData));
-        res.status(201).json({message: 'Your Information has been saved'});
+        fs.writeFileSync(filePath, JSON.stringify(arrayFileData));
+
+        return res.status(201).json({message: `Thank you for your feedback, ${name}. Your Information has been saved`});
+    } else {
+        return res.status(200).json({message: 'Hello World'})
     }
-    return res.status(200).json({message: 'Hello World'})
 }
 
 export default handler;
