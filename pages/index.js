@@ -2,7 +2,8 @@ import Card from '../components/Card';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
-  return <Card>
+  return <div className={styles.container}>
+    <Card>
   <form className={styles.form}>
       <div className={styles.control}>
           <label htmlFor='name'>Your Name</label>
@@ -20,5 +21,6 @@ export default function Home() {
           <button>Send Feedback</button>
       </div>
   </form>
-  </Card>;
+  </Card>
+  </div>;
 }

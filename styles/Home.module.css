@@ -1,3 +1,9 @@
+.container {
+    margin: auto;
+    width: 30%;
+    margin-top: 5rem;
+}
+
 .form {
     padding: 1rem;
   }
