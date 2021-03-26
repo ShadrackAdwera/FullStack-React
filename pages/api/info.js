@@ -20,7 +20,10 @@ const handler = (req,res) => {
 
         return res.status(201).json({message: `Thank you for your feedback, ${name}. Your Information has been saved`});
     } else {
-        return res.status(200).json({message: 'Hello World'})
+        const filePath = path.join(process.cwd(),'data','info.json');
+        const jsonData = fs.readFileSync(filePath);
+        const stringifiedData = JSON.parse(jsonData);
+        return res.status(200).json({data: stringifiedData})
     }
 }
 
